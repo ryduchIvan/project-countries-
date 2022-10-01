@@ -17,6 +17,7 @@ import {
 	REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { useDispatch } from "react-redux";
 const rootReducer = combineReducers({
 	theme: themeReducer,
 	search: searchReducer,
@@ -45,3 +46,7 @@ export const store = configureStore({
 })
 
 export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof persistedReducer>
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;

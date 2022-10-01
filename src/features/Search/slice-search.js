@@ -18,7 +18,7 @@ export const searchSlice = createSlice({
 		setSearchByRegion: (state, action) => {
 			state.region = action.payload;
 		},
-		clearSearch: (state, action) => {
+		clearSearch: (state) => {
 			return initialState;
 		}
 	}

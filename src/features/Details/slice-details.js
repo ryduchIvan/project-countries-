@@ -27,7 +27,7 @@ export const detailsSlice = createSlice({
 	name: "@@details",
 	initialState,
 	reducers: {
-		clearDetails: (state, action) => {
+		clearDetails: (state) => {
 			return initialState
 		}
 	},

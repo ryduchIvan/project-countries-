@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { IoMoon, IoMoonOutline } from "react-icons/io5";
 import { chengeTheme, selectTheme } from "./slice-theme";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useSelector } from "react-redux";
+import {useAppDispatch} from "../../store";
 const ModeSwitcher = styled.div`
   color: var(--colors-text);
   font-size: var(--fs-sm);
@@ -10,11 +10,11 @@ const ModeSwitcher = styled.div`
   // font-weight: var(--fw-bold);
   text-transform: capitalize;
 `;
-function Theme(params) {
-	const disatch = useDispatch();
+function Theme() {
+	const dispatch = useAppDispatch();
 	const theme = useSelector(selectTheme);
-	const handleTheme = () => {
-		disatch(chengeTheme(theme === "light" ? "dark" : "light"))
+	const handleTheme = (): void => {
+		dispatch(chengeTheme(theme === "light" ? "dark" : "light"))
 	}
 	return (
 		<ModeSwitcher onClick={handleTheme}>

@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
+import { useAppDispatch } from "store";
 import { Container } from "./Container";
 import { clearDetails } from "../features/Details/slice-details";
 import { clearSearch } from "../features/Search/slice-search";
 import { Theme } from "../features/Theme/Theme";
+import { selectTheme } from "features/Theme/slice-theme";
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -37,8 +39,8 @@ const ModeSwitcher = styled.div`
 `;
 
 export const Header = () => {
-  const dispatch = useDispatch();
-  const theme = useSelector(store => store.theme);
+  const dispatch = useAppDispatch();
+  const theme = useSelector(selectTheme);
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
@@ -47,6 +49,7 @@ export const Header = () => {
       <Container>
         <Wrapper>
           <Title onClick={() => {
+            console.log(1);
             dispatch(clearDetails());
             dispatch(clearSearch());
           }}

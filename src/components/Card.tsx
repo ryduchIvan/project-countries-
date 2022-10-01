@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {CartInfo} from "../types/cartInfo";
 const Wrapper = styled.article`
   border-radius: var(--radii);
   background-color: car(--colors-ui-base);
@@ -42,8 +42,10 @@ const CardListItem = styled.li`
     font-weight: var(--fw-bold);
   }
 `;
-
-export const Card = ({ img, name, info = [], onClick }) => {
+interface CardInfoProps extends CartInfo{
+  onClick: () => void;
+}
+export const Card = ({ img, name, info = [], onClick }: CardInfoProps) => {
   return (
     <Wrapper onClick={onClick}>
       <CardImage src={img} alt={name} />

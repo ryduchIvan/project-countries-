@@ -5,7 +5,6 @@ import { Details } from "./pages/Details";
 import { Main } from "./components/Main";
 import { NotFound } from "./pages/NotFound";
 import { Route, Routes } from "react-router-dom";
-console.log(1);
 export default function App() {
   return (
     <>
