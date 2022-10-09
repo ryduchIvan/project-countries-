@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import {CartInfo} from "../types/cartInfo";
+import styled from 'styled-components';
+import { CountryInfo } from 'types';
+
 const Wrapper = styled.article`
   border-radius: var(--radii);
   background-color: car(--colors-ui-base);
@@ -42,10 +43,12 @@ const CardListItem = styled.li`
     font-weight: var(--fw-bold);
   }
 `;
-interface CardInfoProps extends CartInfo{
-  onClick: () => void;
+
+interface CardProps extends CountryInfo {
+  onClick: () => void,
 }
-export const Card = ({ img, name, info = [], onClick }: CardInfoProps) => {
+
+export const Card = ({ img, name, info = [], onClick }: CardProps) => {
   return (
     <Wrapper onClick={onClick}>
       <CardImage src={img} alt={name} />

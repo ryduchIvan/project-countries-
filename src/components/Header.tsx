@@ -1,13 +1,9 @@
-import styled from "styled-components";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import {  useSelector } from "react-redux";
-import { useAppDispatch } from "store";
-import { Container } from "./Container";
-import { clearDetails } from "../features/Details/slice-details";
-import { clearSearch } from "../features/Search/slice-search";
-import { Theme } from "../features/Theme/Theme";
-import { selectTheme } from "features/Theme/slice-theme";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+import { Container } from './Container';
+import { ThemeSwitcher } from '../features/theme/ThemeSwitcher';
+import { useCleanup } from '../features/controls/use-cleanup';
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -22,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled(Link).attrs({
-  to: "/"
+  to: '/',
 })`
   color: var(--colors-text);
   font-size: var(--fs-sm);
@@ -30,33 +26,15 @@ const Title = styled(Link).attrs({
   font-weight: var(--fw-bold);
 `;
 
-const ModeSwitcher = styled.div`
-  color: var(--colors-text);
-  font-size: var(--fs-sm);
-  cursor: pointer;
-  // font-weight: var(--fw-bold);
-  text-transform: capitalize;
-`;
-
 export const Header = () => {
-  const dispatch = useAppDispatch();
-  const theme = useSelector(selectTheme);
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
+  const cleanUp = useCleanup();
+
   return (
     <HeaderEl>
       <Container>
         <Wrapper>
-          <Title onClick={() => {
-            console.log(1);
-            dispatch(clearDetails());
-            dispatch(clearSearch());
-          }}
-          >
-            Where is the world?
-          </Title>
-          <Theme />
+          <Title onClick={cleanUp}>Where is the world?</Title>
+          <ThemeSwitcher />
         </Wrapper>
       </Container>
     </HeaderEl>

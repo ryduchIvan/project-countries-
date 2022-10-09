@@ -21,9 +21,11 @@ const Wrapper = styled.section`
     gap: 4rem;
   }
 `;
+
 interface ListProps {
-  children: ReactNode
+  children: ReactNode,
 }
+
 export const List = ({ children }: ListProps) => {
   return <Wrapper>{children}</Wrapper>;
 };
